@@ -8,12 +8,14 @@ class Player:
         self.__value = 'r'
         self.__wins = 0
 
+    @property
     def name(self):
         return self.__name
 
+    @property
     def value(self):
         return self.__value
-
+    @property
     def wins(self):
         return f"{self.__wins} wins."
 
@@ -27,20 +29,20 @@ class Player:
         self.__value = "r"
 
     def play(self, player):
-        if self.value() == player.value():
+        if self.value == player.value:
             return "Draw!"
-        elif 'r' == self.value() and 'p' == player.value():
+        elif 'r' == self.value and 'p' == player.value:
             player.addWin()
-            return f"{player.name()} wins!"
-        elif 's' == self.value() and 'r' == player.value():
+            return f"{player.name.title()} wins!"
+        elif 's' == self.value and 'r' == player.value:
             player.addWin()
-            return f"{player.name()} wins!"
-        elif 'p' == self.value() and 's' == player.value():
+            return f"{player.name.title()} wins!"
+        elif 'p' == self.value and 's' == player.value:
             player.addWin()
-            return f"{player.name()} wins!"
+            return f"{player.name.title()} wins!"
         else:
             self.addWin()
-            return f"{self.name()} wins!"
+            return f"{self.name} wins!"
 
 class Bart(Player):
     def __init__(self):

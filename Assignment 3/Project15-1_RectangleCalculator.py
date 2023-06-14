@@ -8,7 +8,7 @@ def rectangleInput():
             height = int(input(f"{'Height:':{'11'}}"))
             width = int(input(f"{'Width:':{'11'}}"))
             if height > 0 and width > 0:
-                return height, width
+                return Rectangle(height, width)
             else:
                 raise ValueError
         except ValueError:
@@ -18,7 +18,7 @@ def squareInput():
         try:
             sideLength = int(input(f"{'Length:':{'11'}}"))
             if sideLength > 0:
-                return sideLength
+                return Square(sideLength)
             else:
                 raise ValueError
         except ValueError:
@@ -31,17 +31,12 @@ def main():
         print()
         shape = input("Rectangle or square? (r/s): ")
         if "r" == shape.lower():
-            height, width = rectangleInput()
-            rectangle = Rectangle(height, width)
-            print(f"{'Perimeter:':{'11'}}{rectangle.perimeter()}")
-            print(f"{'Area:':{'11'}}{rectangle.area()}")
-            print(rectangle.__str__())
+            shape = rectangleInput()
         elif "s" == shape.lower():
-            length = squareInput()
-            square = Square(length)
-            print(f"{'Perimeter:':{'11'}}{square.perimeter()}")
-            print(f"{'Area:':{'11'}}{square.area()}")
-            print(square.__str__())
+            shape = squareInput()
+        print(f"{'Perimeter:':{'11'}}{shape.perimeter()}")
+        print(f"{'Area:':{'11'}}{shape.area()}")
+        print(shape.__str__())
         print()
         another = input("Continue? (y/n): ")
         if another != 'y':
