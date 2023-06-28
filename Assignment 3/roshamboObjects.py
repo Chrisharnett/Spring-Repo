@@ -15,12 +15,14 @@ class Player:
     @property
     def value(self):
         return self.__value
+
+    @value.setter
+    def value(self, value):
+        self.__value = value
+
     @property
     def wins(self):
         return f"{self.__wins} wins."
-
-    def setValue(self, value):
-        self.__value = value
 
     def addWin(self):
         self.__wins += 1
@@ -48,12 +50,11 @@ class Bart(Player):
     def __init__(self):
         Player.__init__(self, "Bart")
 
-@dataclass
 class Lisa(Player):
     def __init__(self):
         Player.__init__(self, "Lisa")
 
     def generateRoshambo(self):
         values = ["r", "p", "s"]
-        Player.setValue(self, values[random.randint(0, 2)])
+        Player.value = values[random.randint(0, 2)]
 

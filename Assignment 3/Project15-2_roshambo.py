@@ -24,7 +24,7 @@ def main():
     opponent = getOpponent()
     print()
     while True:
-        player.setValue(input("Rock, paper or scissors? (r/p/s): "))
+        player.value = input("Rock, paper or scissors? (r/p/s): ")
         print()
         print(f"{player.name.title() + ':':{'10'}}{roshamboString(player.value)}")
         opponent.generateRoshambo()

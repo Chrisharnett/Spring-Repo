@@ -7,14 +7,12 @@ class Queue:
         self.__list.append(value)
 
     def dequeue(self):
-        if self.hasItems():
-            return self.__list.pop(0)
+        if not self.hasItems():
+            raise IndexError("Can't perform dequeue, there are no items in the queen.")
+        return self.__list.pop(0)
 
     def hasItems(self):
-        if 0 >= len(self.__list):
-            return False
-        else:
-            return True
+        return len(self.__list) > 0
 
 class Stack:
     def __init__(self):
@@ -27,10 +25,8 @@ class Stack:
         return self.__list.pop()
 
     def hasItems(self):
-        if 0 >= len(self.__list):
-            return False
-        else:
-            return True
+        return len(self.__list) > 0
+
 
 class Node:
     def __init__(self, dataval):
@@ -40,6 +36,7 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.headval = None
+        self.endval = None
 
     def addNode(self, value):
         nextNode = Node(value)
@@ -48,18 +45,19 @@ class LinkedList:
             self.endval = nextNode
         self.headval = nextNode
 
-
     def addNodeToBack(self, value):
         nextNode = Node(value)
+
         if self.headval == None:
             self.headval = nextNode
             self.endval = nextNode
             return
 
-        self.endval.nextNode = nextVal
+        self.endval.nextNode = nextNode
         self.endval = nextNode
 
-        # currentval = self.headval
-        # while currentval.nextval is not None:
-        #     currentval = currentval.nextval
-        # currentval.nextval = nextNode
+    def printList(self):
+        printval = self.headval
+        while printval is not None:
+            print(printval.dataval)
+            printval = printval.nextval
