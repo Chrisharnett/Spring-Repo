@@ -53,7 +53,7 @@ def main():
             print(i)
         root.insert(random.randint(1, 5000000))
         values.append(random.randint(1, 5000000))
-    root.insert(123456);
+    root.insert(123456)
     print("starting search using binary search tree")
     startStamp = time.time();
     found = root.search(10) #searchFor(values, 10);

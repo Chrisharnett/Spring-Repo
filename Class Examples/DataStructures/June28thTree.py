@@ -13,6 +13,7 @@ def PrintTree(self):
     print(self.data),
     if self.right:
         self.right.PrintTree()
+
 def main():
     root = Node(12)
     root.insert(6)
