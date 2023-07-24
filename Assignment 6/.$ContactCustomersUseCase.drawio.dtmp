@@ -1,0 +1,82 @@
+<mxfile host="Electron" modified="2023-07-06T00:44:32.086Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="L-BG7yn3mIY3OD3qlRNw" version="21.6.1" type="device">
+  <diagram name="Page-1" id="Dok87h6cKDE8tb03VV3I">
+    <mxGraphModel dx="1871" dy="957" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="600" pageHeight="600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-2" value="" style="ellipse;html=1;shape=startState;fillColor=#CCCCCC;strokeColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="290" y="33" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-3" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#000000;rounded=0;" edge="1" source="SsdCg5bsCeNBOmfpMSt5-2" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="305" y="123" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="SsdCg5bsCeNBOmfpMSt5-4" target="SsdCg5bsCeNBOmfpMSt5-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-4" value="Get customer visit report" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="245" y="123" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="SsdCg5bsCeNBOmfpMSt5-9" target="SsdCg5bsCeNBOmfpMSt5-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-13" value="Regular members" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="SsdCg5bsCeNBOmfpMSt5-12">
+          <mxGeometry x="-0.1684" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="SsdCg5bsCeNBOmfpMSt5-9" target="SsdCg5bsCeNBOmfpMSt5-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-16" value="Missing members" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="SsdCg5bsCeNBOmfpMSt5-15">
+          <mxGeometry x="-0.0957" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="SsdCg5bsCeNBOmfpMSt5-9" target="SsdCg5bsCeNBOmfpMSt5-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-20" value="Heavy User" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="SsdCg5bsCeNBOmfpMSt5-18">
+          <mxGeometry x="-0.0737" y="4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-9" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="285" y="233" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="SsdCg5bsCeNBOmfpMSt5-11" target="SsdCg5bsCeNBOmfpMSt5-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-11" value="Send renewal notice one month before end of membership" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="245" y="333" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="SsdCg5bsCeNBOmfpMSt5-14" target="SsdCg5bsCeNBOmfpMSt5-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-14" value="Contact client and create interest in the gym." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="410" y="333" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.425;exitY=1.033;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="SsdCg5bsCeNBOmfpMSt5-17" target="SsdCg5bsCeNBOmfpMSt5-22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="131" y="463" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-17" value="Contact for early renewal at reduced rate" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="333" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="SsdCg5bsCeNBOmfpMSt5-22" target="SsdCg5bsCeNBOmfpMSt5-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-22" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="285" y="443" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SsdCg5bsCeNBOmfpMSt5-27" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#ff0000;" vertex="1" parent="1">
+          <mxGeometry x="290" y="538" width="30" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
