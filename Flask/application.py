@@ -1,6 +1,6 @@
 #!/usr/bin/env/python3
 
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, request, render_template
 
 ''' Create application instance'''
 app = Flask(__name__)
@@ -8,7 +8,7 @@ app = Flask(__name__)
 ''' Add route decorator'''
 @app.route('/')
 def hello_world():
-    return "Hello World"
+    return render_template('base.html', head_title='Example', page_title='Welcome')
 
 @app.route('/variabletest/<name>')
 def print_variable(name):
@@ -42,7 +42,20 @@ def hello_user(user):
     else:
         return redirect(url_for('hello_guest', guest = user))
 
+@app.route('/input.html', methods = ['POST', 'GET'])
+def information():
+    if request.method == 'POST':
+        info = request.form['info']
+        return redirect(url_for('hello_guest', guest=info))
+    else:
+        return redirect(url_for('hello_world'))
 
+@app.route('/texample')
+def table_example():
+    username = 'Michael'
+    avg_score= 70;
+    marks_dict = {"Physics": 50, "Chem": 70, "Math": 90}
+    return render_template('texample.html', name=username, marks=avg_score, results=marks_dict)
 
 
 if __name__ == '__main__':
