@@ -8,7 +8,7 @@ app = Flask(__name__)
 ''' Add route decorator'''
 @app.route('/')
 def hello_world():
-    return render_template('base.html', head_title='Example', page_title='Welcome')
+    return render_template('base.html')
 
 @app.route('/variabletest/<name>')
 def print_variable(name):
@@ -40,9 +40,9 @@ def hello_user(user):
     if user == 'admin':
         return redirect(url_for('hello_admin'))
     else:
-        return redirect(url_for('hello_guest', guest = user))
+        return redirect(url_for('hello_guest', guest=user))
 
-@app.route('/input.html', methods = ['POST', 'GET'])
+@app.route('/input.html', methods=['POST', 'GET'])
 def information():
     if request.method == 'POST':
         info = request.form['info']
@@ -53,10 +53,10 @@ def information():
 @app.route('/texample')
 def table_example():
     username = 'Michael'
-    avg_score= 70;
+    avg_score = 70
     marks_dict = {"Physics": 50, "Chem": 70, "Math": 90}
     return render_template('texample.html', name=username, marks=avg_score, results=marks_dict)
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
