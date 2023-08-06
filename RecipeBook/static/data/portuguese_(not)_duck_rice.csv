@@ -1,4 +1,4 @@
-,name,description,breakfast,lunch,supper,snack,drink,dessert,ingredients,directions
+,name,description,breakfast,lunch,supper,snack,drink,dessert,ingredients,directions,pic
 0,Portuguese (not) duck rice,Portuguese duck rice with a seitan meat substitute. ,False,True,True,False,False,False,"Seitan:
 2 cups water
 1 tbsp olive oil
@@ -42,4 +42,4 @@ mint leaves
 10. Heat oil in a pan. Sauté leek and onion until soft, about 10 minutes. Add garlic and mix until aromatic. 
 11. Add rice and fry about 5 minutes. Add 400ml of the reserved broth and cook 15 minutes, until rice has cooked.
 12. Stir in the shredded seitan and reserved orange juice.
-13. Transfer to an oiled casserole dish. Top with vegan chorizo and cook in hot oven 20 - 25 minutes, until rice is crispy and golden. Garnish with mint leaves and orange slices."
+13. Transfer to an oiled casserole dish. Top with vegan chorizo and cook in hot oven 20 - 25 minutes, until rice is crispy and golden. Garnish with mint leaves and orange slices.",portuguese_(not)_duck_rice.jpeg

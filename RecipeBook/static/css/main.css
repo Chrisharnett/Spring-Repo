@@ -21,6 +21,10 @@ li {
     margin: 10px;
 }
 
+.displayrecipe > * {
+
+}
+
 textarea{
     height: 200px;
     width: 300px;
@@ -28,6 +32,25 @@ textarea{
 }
 label > textarea{
     display: block;
+}
+.mainImageContainer{
+    max-width: 400px;
+    max-height: 400px;
+}
+.mainImage{
+    width: 100%;
+    border: 1px solid dimgray;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: whitesmoke;
+}
+.smallImage{
+    width: 100px;
+    border: 1px solid dimgray;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: whitesmoke;
+
 }
 
 

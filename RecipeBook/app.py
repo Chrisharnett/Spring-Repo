@@ -21,7 +21,7 @@ def searchRecipe(term):
     for df in recipeList:
         i = df.str.find(term)
     if 1 >= 0:
-        return render_template('view.html', recipe=recipeList[i][0])
+        return render_template('viewRecipe.html', mainRecipe=recipeList[i][0])
 
 @app.route('/', methods=['POST', 'GET'])
 def myRecipeCollection():
@@ -68,9 +68,9 @@ def addRecipe():
         form.recipePicture.data.save(os.path.join(app.config['SUBMITTED_IMG'] + pic))
         df = pd.DataFrame([{'name': name, 'description': description, 'breakfast': breakfast, 'lunch': lunch,
                             'supper': supper, 'snack': snack, 'drink': drink, 'dessert': dessert,
-                            'ingredients': ingredients, 'directions': directions}])
+                            'ingredients': ingredients, 'directions': directions, 'pic': pic}])
         df.to_csv(os.path.join(app.config['SUBMITTED_DATA'] + name.lower().replace(" ", "_") + ".csv"))
-        recipeList.append(df)
+        recipeNames.append(df['name'])
         return redirect(url_for('myRecipeCollection'))
     else:
         return render_template('addRecipe.html', form=form)
@@ -83,22 +83,33 @@ def viewRecipe(recipeName):
     :param recipeName:
     :return: recipe name, ingredients, description
     """
-    df = pd.read_csv(os.path.join(app.config['SUBMITTED_DATA'] +
+    mainRecipe = pd.read_csv(os.path.join(app.config['SUBMITTED_DATA'] +
                                   recipeName.lower().replace(" ", "_") + '.csv'), index_col=False)
-    ingredients = df['ingredients'].str.split("\n")
-    directions = df['directions'].str.split("\n")
+    ingredients = mainRecipe['ingredients'].str.split("\n")
+    directions = mainRecipe['directions'].str.split("\n")
 
-    return render_template('view.html', recipe=df.iloc[0], ingredients=ingredients[0], directions=directions[0])
+    recipeList = [recipe for recipe in recipeNames]
+    # recipeList.remove(mainRecipe['name'])
+    random.shuffle(recipeList)
+    r2 = pd.read_csv(os.path.join(app.config['SUBMITTED_DATA'] +
+                                  recipeList[0].lower().replace(" ", "_") + '.csv'), index_col=False)
+    r3 = pd.read_csv(os.path.join(app.config['SUBMITTED_DATA'] +
+                                  recipeList[1].lower().replace(" ", "_") + '.csv'), index_col=False)
+    r4 = pd.read_csv(os.path.join(app.config['SUBMITTED_DATA'] +
+                                  recipeList[2].lower().replace(" ", "_") + '.csv'), index_col=False)
+
+    return render_template('viewRecipe.html', mainRecipe=mainRecipe.iloc[0], ingredients=ingredients[0], directions=directions[0],
+                           r2=r2.iloc[0], r3=r3.iloc[0], r4=r4.iloc[0])
 
 
 @app.route('/searchRecipes')
 def searchRecipes(term):
-    return render_template('search.html')
+    return render_template('searchRecipes.html')
 
 
 @app.route('/browseRecipes')
 def browseRecipes():
-    return render_template('browse.html')
+    return render_template('browseRecipes.html')
 
 
 if __name__ == '__main__':

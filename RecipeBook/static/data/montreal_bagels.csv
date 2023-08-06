@@ -1,4 +1,4 @@
-,name,description,breakfast,lunch,supper,snack,drink,dessert,ingredients,directions
+,name,description,breakfast,lunch,supper,snack,drink,dessert,ingredients,directions,pic
 0,Montreal Bagels,Chewy bagels boiled in a sweet water bath for a classic Quebec treat.,True,False,False,False,False,False,"227 g water
 16g maple syrup
 2 tsp yeast
@@ -17,6 +17,5 @@
 10. When bagels have puffed a little, simmer them in the water, 2 or 3 at a time, for 1 minute per side. 
 11. Remove from water and dredge in seeds (optional).
 12. Return to parchment paper. Bake 20 - 25 minutes.
-13. Cool on a rack before serviing.
-
-"
+13. Cool on a rack before serving.
+",montreal_bagels.jpg

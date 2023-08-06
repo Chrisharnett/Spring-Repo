@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block head_title %}
-My Recipe Collection
+{{ mainRecipe['name'] }}
 {% endblock %}
 
 {% block Page_Title %}
@@ -9,15 +9,29 @@ My Recipe Collection
 {% endblock %}
 
 {% block Recipe_Title %}
-{{ r1['name'] }}
+{{ mainRecipe['name'] }}
 {% endblock %}
 
-{% block Main_Recipe_Image %}
-    <br><a href="{{ url_for('viewRecipe', recipeName=r1['name']) }}"><img src="{{ url_for('static', filename='img/' + r1['pic']) }}" alt='{{ r1['description'] }}' class='mainImage' ></a><br>
-{%  endblock %}
-
 {% block Recipe_Description %}
-    {{ r1['description'] }}
+<div class="container displayRecipe">
+    <div class="row">
+    <div class="col-md-6">
+      <img src="{{ url_for('static', filename='/img/' + mainRecipe['pic']) }}" alt='{{ mainRecipe['description'] }}' class='mainImage'>
+    </div>
+    <div class="col-md-6" id="ingredientList">
+        <h4 class="font-weight-bold mb-0">Ingredients</h4>
+        {% for ingredient in ingredients %}
+        <br><span class="text-muted font-weight-normal"> {{ ingredient }} </span><br>
+        {% endfor %}
+    </div>
+    <div class="col-md-12" id="directions"></div>
+    <h4 class="font-weight-bold mb-0">Directions </h4>
+        {% for step in directions %}
+        <br><span class="text-muted font-weight-normal"> {{ step }}</span><br>
+        {% endfor %}
+    </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block Heading1_title %}
@@ -69,7 +83,6 @@ My Recipe Collection
 {% block recipe_footer_link_3 %}
     {{ url_for('viewRecipe', recipeName=r4['name']) }}
 {% endblock %}
-
 {% block footer_contents %}
     Chris Harnett <br>
     Student Number 20188141

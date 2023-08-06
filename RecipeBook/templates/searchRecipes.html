@@ -17,27 +17,40 @@ Recipe Name
 {% endblock %}
 
 {% block Heading1_title %}
-    Another Recipe
+    {{ r2['name'] }}
 {% endblock %}
 
 {% block Heading1_contents %}
-    It'd delicious
+{{  r2['description'] }}
 {% endblock %}
 
+{% block recipe_footer_link_1 %}
+    {{ url_for('viewRecipe', recipeName=r2['name']) }}
+{% endblock %}
+
+
 {% block Heading2_title %}
-    Browse Recipe recipe
+    {{ r3['name'] }}
 {% endblock %}
 
 {% block Heading2_contents %}
-    Also delicious
+    {{  r3['description'] }}
+{% endblock %}
+
+{% block recipe_footer_link_2 %}
+    {{ url_for('viewRecipe', recipeName=r3['name']) }}
 {% endblock %}
 
 {% block Heading3_title %}
-    Another photo
+    {{ r4['name'] }}
 {% endblock %}
 
 {% block Heading3_contents %}
-    Even more delicious
+    {{  r4['description'] }}
+{% endblock %}
+
+{% block recipe_footer_link_3 %}
+    {{ url_for('viewRecipe', recipeName=r4['name']) }}
 {% endblock %}
 
 {% block footer_contents %}

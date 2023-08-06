@@ -57,11 +57,11 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-{#        FIX ALT TEXT#}
-{#        <img src="{{ url_for('static', filename='img/{}'.format(recipe.pic)) }}" alt="{{ url_for('static', filename='img/{}'.format(recipe.pic)) }}">#}
         <h1>{% block Recipe_Title %}{% endblock %}</h1>
+        <div class="mainImageContainer">
+            {% block Main_Recipe_Image %}{%  endblock %}
+        </div>
         <p>{% block Recipe_Description %}{% endblock %}</p>
-{#        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>#}
       </div>
     </div>
 
@@ -69,19 +69,25 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4">
-          <h2>{% block Heading1_title %}{% endblock %}</h2>
-          <p>{% block Heading1_contents %}{% endblock %}</p>
-          <p><a class="btn btn-default" href="{% block recipe_footer_link_1 %}{% endblock %}" role="button">View recipe &raquo;</a></p>
+            <h2>{% block Heading1_title %}{% endblock %}</h2>
+            <a href="{% block recipe_footer_link_1 %}{% endblock %}">
+                <div class="smallImageContainer">{% block Small_Recipe_Image_1 %}{%  endblock %}</div>
+            </a>
+            <p>{% block Heading1_contents %}{% endblock %}</p>
         </div>
         <div class="col-md-4">
-          <h2>{% block Heading2_title %}{% endblock %}</h2>
-          <p>{% block Heading2_contents %}{% endblock %}</p>
-          <p><a class="btn btn-default" href=""{% block recipe_footer_link_2 %}{% endblock %}"" role="button">View recipe &raquo;</a></p>
+            <h2>{% block Heading2_title %}{% endblock %}</h2>
+            <a href="{% block recipe_footer_link_2 %}{% endblock %}">
+                <div class="smallImageContainer">{% block Small_Recipe_Image_2 %}{% endblock %}</div>
+            </a>
+            <p>{% block Heading2_contents %}{% endblock %}</p>
        </div>
         <div class="col-md-4">
-          <h2>{% block Heading3_title %}{% endblock %}</h2>
-          <p>{% block Heading3_contents %}{% endblock %}</p>
-          <p><a class="btn btn-default" href=""{% block recipe_footer_link_3 %}{% endblock %}"" role="button">View recipe &raquo;</a></p>
+            <h2>{% block Heading3_title %}{% endblock %}</h2>
+            <a href="{% block recipe_footer_link_3 %}{% endblock %}">
+                <div class="smallImageContainer">{% block Small_Recipe_Image_3 %}{%  endblock %}</div>
+            </a>
+            <p>{% block Heading3_contents %}{% endblock %}</p>
         </div>
       </div>
 
