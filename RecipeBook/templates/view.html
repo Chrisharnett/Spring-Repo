@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block head_title %}
-My Recipe Collection
+{{ recipe['name'] }}
 {% endblock %}
 
 {% block Page_Title %}
@@ -9,11 +9,31 @@ My Recipe Collection
 {% endblock %}
 
 {% block Recipe_Title %}
-Recipe Name
+{{ recipe['name'] }}
 {% endblock %}
 
 {% block Recipe_Description %}
-    This recipe is great!
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <img src="{{ url_for('static', filename='/img/recipe.name'.format(recipe.pic)) }}" alt="{{ recipe['description'] }}">
+    </div>
+      <div class="col-md-8">
+        <h4 class="font-weight-bold mb-0">Ingredients</h4>
+            {% for ingredient in ingredients %}
+            <br><span class="text-muted font-weight-normal"> {{ ingredient }} </span><br>
+            {% endfor %}
+        <h4 class="font-weight-bold mb-0">Directions </h4>
+            {% for step in directions %}
+            <br><span class="text-muted font-weight-normal"> {{ step }}</span><br>
+            {% endfor %}
+
+{#        <h4 class="font-weight-bold mb-0">Beneficiary Phone: <span class="text-muted font-weight-normal"> {{ beneficiary.tel }}</span></h4>#}
+{#        <h4 class="font-weight-bold mb-0">Beneficiary DOB: <span class="text-muted font-weight-normal"> {{ beneficiary.dob }}</span></h4>#}
+{#        <h4 class="font-weight-bold mb-0">Beneficiary Description: <span class="text-muted font-weight-normal"> {{ beneficiary.desc }}</span></h4>#}
+    </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block Heading1_title %}
@@ -38,4 +58,9 @@ Recipe Name
 
 {% block Heading3_contents %}
     Even more delicious
+{% endblock %}
+
+{% block footer_contents %}
+    Chris Harnett <br>
+    Student Number 20188141
 {% endblock %}

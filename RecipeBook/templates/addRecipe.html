@@ -24,13 +24,17 @@ Add a Recipe
             {{ render_field(form.recipeDescription, size=1000) }}
         </div>
         <div class="categories">
-            {{ render_field(form.breakfastCategory) }}
-            {{ render_field(form.lunchCategory ) }}
-            {{ render_field(form.supperCategory) }}
-            {{ render_field(form.dessertCategory) }}
-            {{ render_field(form.supperCategory) }}
-            {{ render_field(form.snackCategory) }}
-            {{ render_field(form.drinkCategory) }}
+            <label>Categories</label>
+            <div>
+                {{ render_field(form.breakfastCategory) }}
+                {{ render_field(form.lunchCategory ) }}
+                {{ render_field(form.supperCategory) }}
+                {{ render_field(form.dessertCategory) }}
+                {{ render_field(form.supperCategory) }}
+                {{ render_field(form.snackCategory) }}
+                {{ render_field(form.drinkCategory) }}
+            </div>
+
         </div>
         <div class="details">
             {{ render_field(form.recipeIngredients, size = 100) }}
@@ -44,41 +48,6 @@ Add a Recipe
     </div>
     </form>
     </section>
-{#    <form action = "" method = "post">#}
-{#        <label for="recipeName">Names: </label>#}
-{#        <input type="text" id="recipeName" name="recipeName" placeholder="Recipe Name"><br>#}
-{##}
-{#        <label for="recipeDescription">Description:</label>#}
-{#        <input type="text" id="recipeDescription" name="recipeDescription" placeHolder="Recipe Description">#}
-{##}
-{#        <div class="form-check form-check-inline">#}
-{#            <input class="form-check-input" type="checkbox" id="breakfast" value="breakfast">#}
-{#            <label class="form-check-label" for="inlineCheckbox1">Breakfast</label>#}
-{#            <input class="form-check-input" type="checkbox" id="lunch" value="lunch" >#}
-{#            <label class="form-check-label" for="inlineCheckbox3">Lunch</label>#}
-{#            <input class="form-check-input" type="checkbox" id="supper" value="supper">#}
-{#            <label class="form-check-label" for="inlineCheckbox2">Supper</label>#}
-{#        </div>#}
-{#        <div class="form-check form-check-inline">#}
-{#            <input class="form-check-input" type="checkbox" id="dessert" value="dessert">#}
-{#            <label class="form-check-label" for="inlineCheckbox2">Dessert</label>#}
-{#            <input class="form-check-input" type="checkbox" id="snack" value="snack">#}
-{#            <label class="form-check-label" for="inlineCheckbox2">Snack</label>#}
-{#            <input class="form-check-input" type="checkbox" id="drink" value="drink">#}
-{#            <label class="form-check-label" for="inlineCheckbox2">Drink</label>#}
-{#        </div>#}
-{##}
-{#        <label for="ingredients">Ingredients:</label>#}
-{#        <input type="text" id="ingredients" name="ingredients" placeHolder="2 potatoes, 4 carrots, etc. "><br>#}
-{##}
-{#        <label for="ingredients">Directions:</label>#}
-{#        <input type="text" id="directions" name="directions" placeHolder="2 potatoes, 4 carrots, etc. "><br>#}
-{##}
-{#        <label for="picFilename">Picture filename:</label>#}
-{#        <input type="text" id="picFilename" name="picFilename" placeHolder="filename.csv">#}
-{##}
-{#        <input type="submit" value="Submit">#}
-{#    </form>#}
 {% endblock %}
 
 {% block Heading1_title %}
@@ -103,4 +72,9 @@ Add a Recipe
 
 {% block Heading3_contents %}
 
+{% endblock %}
+
+{% block footer_contents %}
+    Chris Harnett <br>
+    Student Number 20188141
 {% endblock %}

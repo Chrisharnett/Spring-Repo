@@ -30,7 +30,7 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">{% block Page_Title %}{% endblock %}</a>
+          <a class="navbar-brand" href={{ url_for('myRecipeCollection') }}>{% block Page_Title %}{% endblock %}</a>
         </div>
         <div class="my-navbar">
             <ul class="my-nav-links">
@@ -41,14 +41,14 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 
-          <form class="navbar-form navbar-right" role="form">
-{#            <div class="form-group">#}
-{#              <input type="text" placeholder="Email" class="form-control">#}
-{#            </div>#}
+          <form class="navbar-form navbar-right" role="form" action="http://localhost:5000/searchRecipes" method="POST">
             <div class="form-group">
-              <input type="text" placeholder="Keyword search" class="form-control">
+                <label for="searchString">
+                    <input type="text" id="searchString" placeholder="Keyword search" class="form-control">
+                    <button type="submit" class="btn btn-success">Search Recipes</button>
+                </label>
             </div>
-            <button type="submit" class="btn btn-success">Search Recipes</button>
+
           </form>
         </div><!--/.navbar-collapse -->
       </div>
@@ -71,24 +71,24 @@
         <div class="col-md-4">
           <h2>{% block Heading1_title %}{% endblock %}</h2>
           <p>{% block Heading1_contents %}{% endblock %}</p>
-          <p><a class="btn btn-default" href="#" role="button">View recipe &raquo;</a></p>
+          <p><a class="btn btn-default" href="{% block recipe_footer_link_1 %}{% endblock %}" role="button">View recipe &raquo;</a></p>
         </div>
         <div class="col-md-4">
           <h2>{% block Heading2_title %}{% endblock %}</h2>
           <p>{% block Heading2_contents %}{% endblock %}</p>
-          <p><a class="btn btn-default" href="#" role="button">View recipe &raquo;</a></p>
+          <p><a class="btn btn-default" href=""{% block recipe_footer_link_2 %}{% endblock %}"" role="button">View recipe &raquo;</a></p>
        </div>
         <div class="col-md-4">
           <h2>{% block Heading3_title %}{% endblock %}</h2>
           <p>{% block Heading3_contents %}{% endblock %}</p>
-          <p><a class="btn btn-default" href="#" role="button">View recipe &raquo;</a></p>
+          <p><a class="btn btn-default" href=""{% block recipe_footer_link_3 %}{% endblock %}"" role="button">View recipe &raquo;</a></p>
         </div>
       </div>
 
       <hr>
 
       <footer>
-        <p>&copy; Company 2015</p>
+        <p>{% block footer_contents %}{% endblock %}</p>
       </footer>
     </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="{{ url_for('static', filename='js/vendor/jquery-1.11.2.min.js') }}"><\/script>')</script>

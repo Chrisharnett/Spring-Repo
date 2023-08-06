@@ -9,33 +9,44 @@ My Recipe Collection
 {% endblock %}
 
 {% block Recipe_Title %}
-Recipe Name
+{{ r1['name'] }}
 {% endblock %}
 
 {% block Recipe_Description %}
-    This recipe is great!
+    <br><img src="{{ url_for('static', filename='img/{}'.format(r1['pic'])) }}" alt="{{ r1['description'] }}">
+{{ r1['description'] }}
 {% endblock %}
 
 {% block Heading1_title %}
-    Another Recipe
+    {{ r2['name'] }}
 {% endblock %}
 
 {% block Heading1_contents %}
-    It'd delicious
+{{  r2['description'] }}
 {% endblock %}
 
+{% block recipe_footer_link_1 %}
+    {{ url_for('view.html', recipe=r2.name) }}
+{% endblock %}
+
+
 {% block Heading2_title %}
-    Another recipe
+    {{ r3['name'] }}
 {% endblock %}
 
 {% block Heading2_contents %}
-    Also delicious
+    {{  r3['description'] }}
 {% endblock %}
 
 {% block Heading3_title %}
-    Another photo
+    {{ r4['name'] }}
 {% endblock %}
 
 {% block Heading3_contents %}
-    Even more delicious
+    {{  r4['description'] }}
+{% endblock %}
+
+{% block footer_contents %}
+    Chris Harnett <br>
+    Student Number 20188141
 {% endblock %}

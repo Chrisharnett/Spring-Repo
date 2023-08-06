@@ -21,6 +21,15 @@ li {
     margin: 10px;
 }
 
+textarea{
+    height: 200px;
+    width: 300px;
+    display: block;
+}
+label > textarea{
+    display: block;
+}
+
 
 
 
