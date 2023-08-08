@@ -4,6 +4,9 @@
 My Recipe Collection
 {% endblock %}
 
+{% block Search %}
+    {{  url_for('myRecipeCollection') }}
+{% endblock %}
 {% block Page_Title %}
 My Recipe Collection
 {% endblock %}
@@ -36,13 +39,11 @@ My Recipe Collection
     {{ url_for('viewRecipe', recipeName=r2['name']) }}
 {% endblock %}
 
-
 {% block Heading2_title %}
     {{ r3['name'] }}
 {% endblock %}
 
 {% block Small_Recipe_Image_2 %}
-
     <br><img src="{{ url_for('static', filename='img/' + r3['pic']) }}" alt='{{ r3['description'] }}' class='smallImage' title='click to view'><br>
 {% endblock %}
 

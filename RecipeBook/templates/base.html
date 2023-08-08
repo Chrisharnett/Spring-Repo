@@ -30,21 +30,20 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href={{ url_for('myRecipeCollection') }}>{% block Page_Title %}{% endblock %}</a>
+          <a class="navbar-brand" href="{{ url_for('myRecipeCollection') }}">{% block Page_Title %}{% endblock %}</a>
         </div>
         <div class="my-navbar">
             <ul class="my-nav-links">
-                <li><a href={{ url_for('searchRecipes') }}>Search</a></li>
+
                 <li><a href={{ url_for('browseRecipes') }}>Browse Recipes</a></li>
                 <li><a href={{ url_for('addRecipe') }}>Add Recipes</a></li>
             </ul>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-
-          <form class="navbar-form navbar-right" role="form" action="http://localhost:5000/searchRecipes" method="POST">
+          <form class="navbar-form navbar-right" action="{{ url_for('myRecipeCollection') }}" method="POST">
             <div class="form-group">
                 <label for="searchString">
-                    <input type="text" id="searchString" placeholder="Keyword search" class="form-control">
+                    <input type="text" id="searchString" name='searchString' placeholder="Keyword search">
                     <button type="submit" class="btn btn-success">Search Recipes</button>
                 </label>
             </div>

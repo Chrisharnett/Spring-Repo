@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from 'form-macros.html' import render_field %}
 
 {% block head_title %}
 My Recipe Collection
@@ -9,15 +10,46 @@ My Recipe Collection
 {% endblock %}
 
 {% block Recipe_Title %}
-Recipe Name
+My Recipe Collection
 {% endblock %}
 
 {% block Recipe_Description %}
-    This recipe is great!
+    <section>
+    <form action="{{ url_for('browseRecipes') }}" enctype="multipart/form-data" method="post">
+        {{ form.csrf_token }}
+    <div class="row">
+        <div class="col-md-8 addRecipeForm">
+            <div class="categories">
+                <label>Categories</label>
+                <div>
+                    {{ render_field(form.breakfastCategory) }}
+                    {{ render_field(form.lunchCategory ) }}
+                    {{ render_field(form.supperCategory) }}
+                    {{ render_field(form.dessertCategory) }}
+                    {{ render_field(form.snackCategory) }}
+                    {{ render_field(form.drinkCategory) }}
+                </div>
+            </div>
+        </div>
+        <div class="submit">
+            <button type="submit">Refine Search</button>
+        </div>
+    </div>
+    {% for recipe in recipes %}
+        <br><div class="col-md-3">
+            {{ recipe[0] }}
+            <br><a href="{{ url_for('viewRecipe', recipeName=recipe[0]) }}"><img src="{{ url_for('static', filename='img/' + recipe[2]) }}" alt='{{ recipe[1] }}' class='smallImage' title='click to view'></a><br>
+            {{  recipe[1] }}
+        </div>
+    {% endfor %}
 {% endblock %}
 
 {% block Heading1_title %}
     {{ r2['name'] }}
+{% endblock %}
+
+{% block Small_Recipe_Image_1 %}
+    <br><img src="{{ url_for('static', filename='img/' + r2['pic']) }}" alt='{{ r2['description'] }}' class='smallImage' title='click to view'><br>
 {% endblock %}
 
 {% block Heading1_contents %}
@@ -28,9 +60,12 @@ Recipe Name
     {{ url_for('viewRecipe', recipeName=r2['name']) }}
 {% endblock %}
 
-
 {% block Heading2_title %}
     {{ r3['name'] }}
+{% endblock %}
+
+{% block Small_Recipe_Image_2 %}
+    <br><img src="{{ url_for('static', filename='img/' + r3['pic']) }}" alt='{{ r3['description'] }}' class='smallImage' title='click to view'><br>
 {% endblock %}
 
 {% block Heading2_contents %}
@@ -43,6 +78,10 @@ Recipe Name
 
 {% block Heading3_title %}
     {{ r4['name'] }}
+{% endblock %}
+
+{% block Small_Recipe_Image_3 %}
+    <br><img src="{{ url_for('static', filename='img/' + r4['pic']) }}" alt='{{ r4['description'] }}' class='smallImage' title='click to view'><br>
 {% endblock %}
 
 {% block Heading3_contents %}

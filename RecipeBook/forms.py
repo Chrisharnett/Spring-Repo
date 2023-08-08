@@ -16,3 +16,11 @@ class RecipeForm(FlaskForm):
     recipeDirections = TextAreaField('Directions:', validators=[DataRequired()])
     recipePicture = FileField('Picture:', validators=[FileRequired()])
 
+class CategoryForm(FlaskForm):
+    breakfastCategory = BooleanField('Breakfast')
+    lunchCategory = BooleanField('Lunch')
+    supperCategory = BooleanField('Supper')
+    dessertCategory = BooleanField('Dessert')
+    snackCategory = BooleanField('Snack')
+    drinkCategory = BooleanField('Drink')
+
