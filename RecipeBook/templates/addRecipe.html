@@ -18,14 +18,14 @@ Add a Recipe
     <form action="{{ url_for('myRecipeCollection') }}" enctype="multipart/form-data" method="post">
         {{ form.csrf_token }}
 <div class="row">
-    <div class="col-md-8 addRecipeForm">
+    <div class="col-md-8 addRecipeForm d-flex">
         <div class="nameAndDescription">
             {{ render_field(form.recipeName, size=20) }}
             {{ render_field(form.recipeDescription, size=1000) }}
         </div>
         <div class="categories">
             <label>Categories</label>
-            <div>
+            <div class="categoryList d-inline-flex p2">
                 {{ render_field(form.breakfastCategory) }}
                 {{ render_field(form.lunchCategory ) }}
                 {{ render_field(form.supperCategory) }}
@@ -40,9 +40,9 @@ Add a Recipe
             {{ render_field(form.recipePicture) }}
         </div>
     </div>
-        <div class="submit">
-            <button type="submit">Submit</button>
-        </div>
+</div>
+    <div class="submit">
+        <button type="submit">Submit</button>
     </div>
     </form>
     </section>

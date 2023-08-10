@@ -15,6 +15,14 @@ path = os.getcwd() + "/static/data"
 recipeNames = []
 for r in os.listdir(path):
     recipeNames.append(r.replace(".csv", ""))
+# recipeDf = pd.DataFrame(columns=[',name,description,breakfast,lunch,supper,snack,drink,dessert,ingredients,'
+#                                  'directions,pic'.split(",")])
+#
+# for name in recipeNames:
+#     r = pd.read_csv(os.path.join(app.config['SUBMITTED_DATA'] +
+#                                   name.lower().replace(" ", "_") + '.csv'), index_col=False)
+#     recipeDf = pd.concat([recipeDf, r.iloc[0]])
+
 
 @app.route('/', methods=['POST', 'GET'])
 def myRecipeCollection():
@@ -34,7 +42,7 @@ def myRecipeCollection():
 
     if request.method == 'POST':
         searchString = request.form['searchString']
-        return redirect (url_for('searchRecipes', searchString=searchString))
+        return redirect(url_for('searchRecipes', searchString=searchString))
 
     return render_template('index.html', r1=r1.iloc[0], r2=r2.iloc[0], r3=r3.iloc[0], r4=r4.iloc[0])
 
@@ -47,7 +55,7 @@ def addRecipe():
     """
     form = RecipeForm()
     if form.validate_on_submit():
-        name = form.recipeName.data
+        recipeName = form.recipeName.data
         description = form.recipeDescription.data
         breakfast = form.breakfastCategory.data
         lunch = form.lunchCategory.data
@@ -57,12 +65,12 @@ def addRecipe():
         dessert = form.dessertCategory.data
         ingredients = form.recipeIngredients.data
         directions = form.recipeDirections.data
-        pic = name.lower().replace(" ", "_") + "." + secure_filename(form.recipePicture.data.filename).split('.')[-1]
+        pic = recipeName.lower().replace(" ", "_") + "." + secure_filename(form.recipePicture.data.filename).split('.')[-1]
         form.recipePicture.data.save(os.path.join(app.config['SUBMITTED_IMG'] + pic))
-        df = pd.DataFrame([{'name': name, 'description': description, 'breakfast': breakfast, 'lunch': lunch,
+        df = pd.DataFrame([{'name': recipeName, 'description': description, 'breakfast': breakfast, 'lunch': lunch,
                             'supper': supper, 'snack': snack, 'drink': drink, 'dessert': dessert,
                             'ingredients': ingredients, 'directions': directions, 'pic': pic}])
-        df.to_csv(os.path.join(app.config['SUBMITTED_DATA'] + name.lower().replace(" ", "_") + ".csv"))
+        df.to_csv(os.path.join(app.config['SUBMITTED_DATA'] + recipeName.lower().replace(" ", "_") + ".csv"))
         recipeNames.append(df['name'])
         return redirect(url_for('myRecipeCollection'))
     else:
@@ -82,7 +90,7 @@ def viewRecipe(recipeName):
     directions = mainRecipe['directions'].str.split("\n")
 
     recipeList = [recipe for recipe in recipeNames]
-    # recipeList.remove(mainRecipe['name'])
+    recipeList.remove(mainRecipe.iloc[0]['name'].lower().replace(" ", "_"))
     random.shuffle(recipeList)
     r2 = pd.read_csv(os.path.join(app.config['SUBMITTED_DATA'] +
                                   recipeList[0].lower().replace(" ", "_") + '.csv'), index_col=False)

@@ -15,20 +15,21 @@ My Recipe Collection
 {% block Recipe_Description %}
 <div class="container displayRecipe">
     <div class="row">
-    <div class="col-md-6">
-      <img src="{{ url_for('static', filename='/img/' + mainRecipe['pic']) }}" alt='{{ mainRecipe['description'] }}' class='mainImage'>
-    </div>
-    <div class="col-md-6" id="ingredientList">
-        <h4 class="font-weight-bold mb-0">Ingredients</h4>
-        {% for ingredient in ingredients %}
-        <br><span class="text-muted font-weight-normal"> {{ ingredient }} </span><br>
-        {% endfor %}
-    </div>
-    <div class="col-md-12" id="directions"></div>
-    <h4 class="font-weight-bold mb-0">Directions </h4>
-        {% for step in directions %}
-        <br><span class="text-muted font-weight-normal"> {{ step }}</span><br>
-        {% endfor %}
+        <div class="col-md-6">
+          <img src="{{ url_for('static', filename='/img/' + mainRecipe['pic']) }}" alt='{{ mainRecipe['description'] }}' class='mainImage'>
+        </div>
+        <div class="col-md-6" id="ingredientList">
+            <h4 class="font-weight-bold mb-0">Ingredients</h4>
+            {% for ingredient in ingredients %}
+            <br><span class="text-muted font-weight-normal"> {{ ingredient }} </span>
+            {% endfor %}
+        </div>
+        <div class="col-md-12  mt-5" id="directions">
+            <h4 class="font-weight-bold mb-0">Directions </h4>
+            {% for step in directions %}
+            <br><span class="text-muted font-weight-normal"> {{ step }}</span>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %}

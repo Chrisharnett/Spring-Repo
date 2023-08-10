@@ -32,12 +32,15 @@ sortedTypeList = dtypeList.sort_values()
 
 """ search for a value """
 
-appliedExample.isin([3, 5]) """either 3 or 5"""
+appliedExample.isin([3, 5]) 
+"""either 3 or 5"""
 
-appliedExample[appliedExample.isin([3,5])] """ displays values that match """
+appliedExample[appliedExample.isin([3,5])] 
+""" displays values that match """
 
 """ accessing the values"""
-appliedExample.values """ outputs an array of the values """
+appliedExample.values 
+""" outputs an array of the values """
 valuesList = [i for i in appliedExample.values]
 
 """ index method """

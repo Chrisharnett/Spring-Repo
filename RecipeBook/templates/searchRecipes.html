@@ -13,13 +13,17 @@ Search Results
 {% endblock %}
 
 {% block Recipe_Description %}
-    {% for recipe in searchResults %}
-        <br><div class="col-md-3">
-            {{ recipe[0] }}
-            <br><a href="{{ url_for('viewRecipe', recipeName=recipe[0]) }}"><img src="{{ url_for('static', filename='img/' + recipe[2]) }}" alt='{{ recipe[1] }}' class='smallImage' title='click to view'></a><br>
-            {{  recipe[1] }}
-        </div>
-    {% endfor %}
+    {% if searchResults|length > 0 %}
+        {% for recipe in searchResults %}
+            <br><div class="col-md-3">
+                {{ recipe[0] }}
+                <br><a href="{{ url_for('viewRecipe', recipeName=recipe[0]) }}"><img src="{{ url_for('static', filename='img/' + recipe[2]) }}" alt='{{ recipe[1] }}' class='smallImage' title='click to view'></a><br>
+                {{  recipe[1] }}
+            </div>
+        {% endfor %}
+    {% else %}
+        <br><div class="no results">No recipes match your search.</div>
+    {% endif %}
 {% endblock %}
 
 {% block Heading1_title %}

@@ -13,16 +13,22 @@ li {
     padding: 0;
     list-style-type: none;
 }
-.addRecipeForm > * {
-    padding: 10px;
-}
+
 .categories{
-    display: inline-flex;
-    margin: 10px;
+    /*display: inline-flex;*/
+    /*margin: 10px;*/
 }
-
-.displayrecipe > * {
-
+.categoryList > label{
+    margin-right: 10px;
+}
+.categoryList{
+    display: inline-flex;
+}
+.row{
+    justify-content: space-between;
+}
+.d-flex{
+    gap: 10px;
 }
 
 textarea{
@@ -50,7 +56,9 @@ label > textarea{
     border-radius: 4px;
     padding: 5px;
     background-color: whitesmoke;
-
+}
+.submit{
+    padding-top: 5px;
 }
 
 
