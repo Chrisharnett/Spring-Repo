@@ -1,4 +1,3 @@
-
 class Media:
 
     def __init__(self, name, author):
@@ -12,15 +11,18 @@ class Media:
     @property
     def author(self):
         return self.__author
+
     @name.setter
     def setName(self, name):
         self.__name = name
+
     @author.setter
     def setAuthor(self, author):
         self.__author = author
 
     def __str__(self):
         return f"Title: {self.__name}\nAuthor: {self.__author}"
+
 
 class Book(Media):
 
@@ -31,6 +33,7 @@ class Book(Media):
     @property
     def pages(self):
         return self.__pages
+
     @pages.setter
     def setPages(self, pages):
         self.__pages = pages
@@ -47,12 +50,14 @@ class AudioRecording(Media):
     @property
     def length(self):
         return self.__length
+
     @length.setter
     def setLength(self, length):
         self.__length = length
 
     def __str__(self):
         return f"{Media.__str__(self)}\nLength: {self.__length}\n"
+
 
 class MediaLibrary:
     def __init__(self):
@@ -65,7 +70,6 @@ class MediaLibrary:
         for media in self.__list:
             if name.lower() == media.name.lower():
                 self.__list.remove(media)
-
 
     def __iter__(self):
         for media in self.__list:
@@ -95,6 +99,3 @@ class MediaLibrary:
                     elif isinstance(media, AudioRecording):
                         length = input("Length: ")
                         media.setLength(length)
-
-
-

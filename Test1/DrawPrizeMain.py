@@ -16,5 +16,6 @@ def main():
             print(prize)
             ticketsOut.append(ticket)
 
+
 if __name__ == '__main__':
     main()

@@ -1,6 +1,6 @@
 #!/usr/bin/bin/env/python3
 
-from animal import *
+from Classes_animal import *
 def main():
     zoo = Zoo()
     zoo.addAnimal(Donkey("Donkey1", 7))

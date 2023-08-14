@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, request, render_template
+from flask import Flask, redirect, url_for, request, render_template, flash
 import os
 import pandas as pd
 from werkzeug.utils import secure_filename
@@ -32,7 +32,7 @@ def myRecipeCollection():
     """
     random.shuffle(recipeNames)
     r1 = pd.read_csv(os.path.join(app.config['SUBMITTED_DATA'] +
-                                  recipeNames[0].lower().replace(" ", "_") + '.csv'), index_col=False)
+                                  '5_minute_chocolate_pudding'.lower().replace(" ", "_") + '.csv'), index_col=False)
     r2 = pd.read_csv(os.path.join(app.config['SUBMITTED_DATA'] +
                                   recipeNames[1].lower().replace(" ", "_") + '.csv'), index_col=False)
     r3 = pd.read_csv(os.path.join(app.config['SUBMITTED_DATA'] +
@@ -40,9 +40,35 @@ def myRecipeCollection():
     r4 = pd.read_csv(os.path.join(app.config['SUBMITTED_DATA'] +
                                   recipeNames[3].lower().replace(" ", "_") + '.csv'), index_col=False)
 
-    if request.method == 'POST':
+    if request.method == 'POST' and request.form['action'] == 'search':
         searchString = request.form['searchString']
         return redirect(url_for('searchRecipes', searchString=searchString))
+    elif request.method =='POST' and request.form['action'] == 'newRecipe':
+        form = RecipeForm()
+        if form.validate_on_submit():
+            recipeName = form.recipeName.data
+            description = form.recipeDescription.data
+            breakfast = form.breakfastCategory.data
+            lunch = form.lunchCategory.data
+            supper = form.supperCategory.data
+            snack = form.snackCategory.data
+            drink = form.drinkCategory.data
+            dessert = form.dessertCategory.data
+            ingredients = form.recipeIngredients.data
+            directions = form.recipeDirections.data
+            pic = recipeName.lower().replace(" ", "_") + "." + \
+                  secure_filename(form.recipePicture.data.filename).split('.')[-1]
+            form.recipePicture.data.save(os.path.join(app.config['SUBMITTED_IMG'] + pic))
+            df = pd.DataFrame(
+                [{'name': recipeName, 'description': description, 'breakfast': breakfast, 'lunch': lunch,
+                  'supper': supper, 'snack': snack, 'drink': drink, 'dessert': dessert,
+                  'ingredients': ingredients, 'directions': directions, 'pic': pic}])
+            df.to_csv(os.path.join(app.config['SUBMITTED_DATA'] + recipeName.lower().replace(" ", "_") + ".csv"))
+            recipeNames.append(df['name'])
+            flash('Recipe saved!')
+            return redirect(url_for('myRecipeCollection'))
+        else:
+            return render_template('addRecipe.html', form=form)
 
     return render_template('index.html', r1=r1.iloc[0], r2=r2.iloc[0], r3=r3.iloc[0], r4=r4.iloc[0])
 
@@ -53,28 +79,10 @@ def addRecipe():
         Create and get data to make a recipe.
         :return: if form is complete, go to home page. Else reload addRecipe page
     """
+## form functionality was moved to the index because of conflicts with the submit buttons.
+
     form = RecipeForm()
-    if form.validate_on_submit():
-        recipeName = form.recipeName.data
-        description = form.recipeDescription.data
-        breakfast = form.breakfastCategory.data
-        lunch = form.lunchCategory.data
-        supper = form.supperCategory.data
-        snack = form.snackCategory.data
-        drink = form.drinkCategory.data
-        dessert = form.dessertCategory.data
-        ingredients = form.recipeIngredients.data
-        directions = form.recipeDirections.data
-        pic = recipeName.lower().replace(" ", "_") + "." + secure_filename(form.recipePicture.data.filename).split('.')[-1]
-        form.recipePicture.data.save(os.path.join(app.config['SUBMITTED_IMG'] + pic))
-        df = pd.DataFrame([{'name': recipeName, 'description': description, 'breakfast': breakfast, 'lunch': lunch,
-                            'supper': supper, 'snack': snack, 'drink': drink, 'dessert': dessert,
-                            'ingredients': ingredients, 'directions': directions, 'pic': pic}])
-        df.to_csv(os.path.join(app.config['SUBMITTED_DATA'] + recipeName.lower().replace(" ", "_") + ".csv"))
-        recipeNames.append(df['name'])
-        return redirect(url_for('myRecipeCollection'))
-    else:
-        return render_template('addRecipe.html', form=form)
+    return render_template('addRecipe.html', form=form)
 
 
 @app.route('/viewRecipe/<recipeName>')

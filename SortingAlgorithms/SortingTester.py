@@ -6,7 +6,7 @@ import csv
 import sys
 
 LOWVALUE = 10000
-HIGHVALUE = 200000
+HIGHVALUE = 20000
 INTERVAL = 10000
 
 
@@ -156,10 +156,10 @@ def main():
             for o in range(n):
                 data.append(random.randint(1, HIGHVALUE))
             startStamp = datetime.now()
-            mergeSort(data)
-            algo = "mergesort"
-            # quickSort(data)
-            # algo = "quicksort"
+            # mergeSort(data)
+            # algo = "mergesort"
+            quickSort(data)
+            algo = "quicksort"
             # heapSort(data)
             # algo = "heapSort"
             # bubbleSort(data)

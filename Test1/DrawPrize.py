@@ -22,21 +22,4 @@ class DrawPrize:
         else:
             return f"You win {self.__prize}"
 
-
-    # @property
-    # def highNumber(self):
-    #     return self.__highNumber
-    #
-    # @highNumber.setter
-    # def highNumber(self, number):
-    #     self.__highNumber = number
-    #
-    # @property
-    # def lowNumber(self):
-    #     return self.__lowNumber
-    #
-    # @lowNumber.setter
-    # def lowNumber(self, number):
-    #     self.__lowNumber = number
-
-
+        
