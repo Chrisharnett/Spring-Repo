@@ -19,16 +19,21 @@ My Recipe Collection
           <img src="{{ url_for('static', filename='/img/' + mainRecipe['pic']) }}" alt='{{ mainRecipe['description'] }}' class='mainImage'>
         </div>
         <div class="col-md-6" id="ingredientList">
-            <h4 class="font-weight-bold mb-0">Ingredients</h4>
-            {% for ingredient in ingredients %}
-            <br><span class="text-muted font-weight-normal"> {{ ingredient }} </span>
+            <h2 class="font-weight-bold mb-0">Ingredients</h2>
+            <ul>
+                {% for ingredient in ingredients %}
+            <li class="text-muted font-weight-normal"> {{ ingredient }} </li><br>
             {% endfor %}
+            </ul>
+
         </div>
         <div class="col-md-12  mt-5" id="directions">
-            <h4 class="font-weight-bold mb-0">Directions </h4>
-            {% for step in directions %}
-            <br><span class="text-muted font-weight-normal"> {{ step }}</span>
-            {% endfor %}
+            <h2 class="font-weight-bold mb-0">Directions </h2>
+            <ul>
+                {% for step in directions %}
+                <li class="text-muted font-weight-normal"> {{ step }}</li><br>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </div>

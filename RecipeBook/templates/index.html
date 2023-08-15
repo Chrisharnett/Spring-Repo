@@ -17,7 +17,7 @@ My Recipe Collection
 
 {% block Main_Recipe_Image %}
     <br><a href="{{ url_for('viewRecipe', recipeName=r1['name']) }}">
-    <img src="{{ url_for('static', filename='img/' + r1['pic']) }}" alt='{{ r1['description'] }}' class='img-fluid' ></a><br>
+    <img src="{{ url_for('static', filename='img/' + r1['pic']) }}" alt='{{ r1['description'] }}' class='mainImage img-fluid' ></a><br>
 {%  endblock %}
 
 {% block Recipe_Description %}

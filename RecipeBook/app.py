@@ -15,14 +15,6 @@ path = os.getcwd() + "/static/data"
 recipeNames = []
 for r in os.listdir(path):
     recipeNames.append(r.replace(".csv", ""))
-# recipeDf = pd.DataFrame(columns=[',name,description,breakfast,lunch,supper,snack,drink,dessert,ingredients,'
-#                                  'directions,pic'.split(",")])
-#
-# for name in recipeNames:
-#     r = pd.read_csv(os.path.join(app.config['SUBMITTED_DATA'] +
-#                                   name.lower().replace(" ", "_") + '.csv'), index_col=False)
-#     recipeDf = pd.concat([recipeDf, r.iloc[0]])
-
 
 @app.route('/', methods=['POST', 'GET'])
 def myRecipeCollection():
@@ -32,7 +24,7 @@ def myRecipeCollection():
     """
     random.shuffle(recipeNames)
     r1 = pd.read_csv(os.path.join(app.config['SUBMITTED_DATA'] +
-                                  '5_minute_chocolate_pudding'.lower().replace(" ", "_") + '.csv'), index_col=False)
+                                  recipeNames[0].lower().replace(" ", "_") + '.csv'), index_col=False)
     r2 = pd.read_csv(os.path.join(app.config['SUBMITTED_DATA'] +
                                   recipeNames[1].lower().replace(" ", "_") + '.csv'), index_col=False)
     r3 = pd.read_csv(os.path.join(app.config['SUBMITTED_DATA'] +
@@ -43,7 +35,7 @@ def myRecipeCollection():
     if request.method == 'POST' and request.form['action'] == 'search':
         searchString = request.form['searchString']
         return redirect(url_for('searchRecipes', searchString=searchString))
-    elif request.method =='POST' and request.form['action'] == 'newRecipe':
+    elif request.method == 'POST' and request.form['action'] == 'newRecipe':
         form = RecipeForm()
         if form.validate_on_submit():
             recipeName = form.recipeName.data
@@ -66,9 +58,9 @@ def myRecipeCollection():
             df.to_csv(os.path.join(app.config['SUBMITTED_DATA'] + recipeName.lower().replace(" ", "_") + ".csv"))
             recipeNames.append(df['name'])
             flash('Recipe saved!')
-            return redirect(url_for('myRecipeCollection'))
+            return redirect(url_for('addRecipe'))
         else:
-            return render_template('addRecipe.html', form=form)
+            return render_template('addRecipe.html')
 
     return render_template('index.html', r1=r1.iloc[0], r2=r2.iloc[0], r3=r3.iloc[0], r4=r4.iloc[0])
 
@@ -79,12 +71,15 @@ def addRecipe():
         Create and get data to make a recipe.
         :return: if form is complete, go to home page. Else reload addRecipe page
     """
-## form functionality was moved to the index because of conflicts with the submit buttons.
+    ## form functionality was moved to the index because of conflicts with the submit buttons.
 
     form = RecipeForm()
     return render_template('addRecipe.html', form=form)
 
-
+@app.route('/recipeAdded.html')
+def recipeAdded():
+    form = RecipeForm()
+    return render_template('recipeAdded.html', form=form)
 @app.route('/viewRecipe/<recipeName>')
 def viewRecipe(recipeName):
     """
